@@ -30,6 +30,9 @@ async def process_help_command(message: Message):
 # кроме команд "/start" и "/help"
 @dp.message()
 async def send_echo(message: Message):
+    # для вывода json прямо в телегу боту. если укажем print, то ответ получим в терминал ide indent отступ
+    # exlude не будем выводит пустые строки в терминал
+    # await message.reply(message.model_dump_json(indent=4, exclude_none=True))
     try:
         await message.send_copy(chat_id=message.chat.id)
     except TypeError:
